@@ -1,0 +1,55 @@
+group 'com.littlefishapp.littlefish_smartpos_plugin'
+version '1.0'
+
+buildscript {
+    repositories {
+//        flatDir {
+//            dirs ('libs')
+//        }
+        google()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+//        compileOnly fileTree(dir: 'libAars', include: ['*.aar'])
+////        implementation(name: 'PAX_POSLinkAndroid_20220120', ext: 'aar')
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        flatDir {
+            dirs ('libs')
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    //noinspection GradleCompatible
+    //implementation "com.android.support:appcompat-v7:23.1.1"
+//    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version:'3.4'
+    //implementation fileTree (include: ['*.jar', '*.aar'], dir: 'libs')
+    api(name: 'PAX_POSLinkAndroid_20220120', ext: 'aar')
+//    compileOnly fileTree(dir: 'libAars', include: ['*.aar'])
+}
